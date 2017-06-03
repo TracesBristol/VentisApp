@@ -1,0 +1,44 @@
+<template name="info">
+  <h2>Screen Names</h2>
+  <ul>
+    {{#each tweets}}
+      <li>{{screen_name}}</li>
+    {{/each}}
+  </ul>
+  <h2>Tag Count</h2>
+  <ul>
+      {{#each tagMap}}
+        <li> {{_id}}: {{value}} tweets</li>
+      {{/each}}
+  </ul>
+  <h2>Tag Sentiment</h2>
+  <ul>
+      {{#each tagSentMap}}
+        <li> {{_id}}: {{value}}</li>
+      {{/each}}
+  </ul>
+  <h2>Location Count</h2>
+  <ul>
+      {{#each locationMap}}
+        <li> {{_id}}: {{value}}</li>
+      {{/each}}
+  </ul>
+  <h2>Token Count</h2>
+  <ul>
+      {{#each tokenMap}}
+        <li> {{_id}}: {{value}}</li>
+      {{/each}}
+  </ul>
+  <h2>Language Count</h2>
+  <ul>
+      {{#each languageMap}}
+        <li> {{_id}}: {{value}}</li>
+      {{/each}}
+  </ul>
+  <h2>Date Count</h2>
+  <ul>
+      {{#each dateMap}}
+        <li> {{_id}}: {{value}}</li>
+      {{/each}}
+  </ul>
+</template>

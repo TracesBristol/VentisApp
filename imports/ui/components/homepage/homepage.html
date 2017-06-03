@@ -1,0 +1,71 @@
+<template name="homeJumbotron">
+    <div class="jumbotron text-center">
+        <h1>VENTIS</h1>
+        <p class="subtitle">Tailored Twitter analytics for all</p>
+    </div>
+</template>
+
+<template name="homeCurrentlyTracking">
+    <div class="col-sm-4">
+        <h2 class="text-center">Currently Tracked Keywords</h2>
+        <ul class="list-group">
+            {{#each keywords}}
+              <li class="list-group-item trendingItem text-center" style="text-transform: capitalize">{{word}}</li>
+            {{/each}}
+        </ul>
+        <form class="keyword-add text-center">
+          <input type="text" name="keyword" placeholder="Keyword to add" required>
+          <input type="submit" name="submit" value="Add a keyword">
+        </form>
+        <form class="keyword-remove text-center">
+          <input type="text" name="keyword" placeholder="Keyword to remove" required>
+          <input type="submit" name="submit" value="Remove keyword">
+        </form>
+    </div>
+</template>
+
+<template name="keywordPolarity">
+    <div class="col-sm-4">
+        <h2 class="text-center">Public Sentiment: </h2>
+        <ul class="list-group">
+            {{#each sentimentMap}}
+              <li class="list-group-item trendingItem text-center" style="text-transform: capitalize">{{_id}}: {{value}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="lineChart">
+    <svg id="lineChart"></svg>
+</template>
+
+<template name="homeGraphedTrends">
+    <div class="col-sm-8">
+        <h2 class="text-center">Number of Tweets</h2>
+        <span class="mapPlaceholder">
+            {{> lineChart}}
+        </span>
+    </div>
+</template>
+
+<template name="homeKeywords">
+    <div class="col-sm-4">
+        <h2 class="text-center">Keywords</h2>
+        <p class="text-center">Click a keyword to load graph</p>
+        <ul class="list-group WList wMList-active">
+            {{#each tagMap}}
+                <button type="button" class="list-group-item wMItem graphButton" style="text-transform: capitalize; width:100%; text-align:center" id="{{_id}}">{{_id}}: {{value}} tweets</button>
+            {{/each}}
+            <button type="button" class="list-group-item wMItem graphButton" style="text-align:center" id="overall">Overall: {{numTweets}} Tweets</button>
+        </ul>
+    </div>
+</template>
+
+<template name="homeSection">
+    <div class="container-fluid">
+        <div class="row">
+            {{> homeGraphedTrends}}
+            {{> homeKeywords}}
+        </div>
+    </div>
+</template>

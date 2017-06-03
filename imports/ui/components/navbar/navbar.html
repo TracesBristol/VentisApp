@@ -1,0 +1,27 @@
+<template name="navbar">
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">VENTIS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="overview"><a href="/">Overview</a></li>
+                    <li id="insight"><a href="Insight">Insight</a></li>
+                    <li id="admin"><a href="admin">Admin</a></li>
+                    {{#if currentUser}}
+                        <li id="logout" style="cursor: pointer; cursor: hand;"><a>Logout</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>
+
+<template name="footer">
+    <footer class="container-fluid text-center" style="padding-top:50px;padding-bottom:25px">
+        <a href="#body" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </footer>
+</template>

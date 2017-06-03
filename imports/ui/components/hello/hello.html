@@ -1,0 +1,16 @@
+<template name="hello">
+    <form class="keyword-add">
+      <input type="text" name="keyword" placeholder="Keyword to add" required>
+      <input type="submit" name="submit" value="Add new keyword">
+    </form>
+    <form class="keyword-remove">
+      <input type="text" name="keyword" placeholder="Keyword to remove" required>
+      <input type="submit" name="submit" value="Remove keyword">
+    </form>
+    <h2>Keywords:</h2>
+    <ul>
+        {{#each keywords}}
+          <li>{{word}}</li>
+        {{/each}}
+    </ul>
+</template>

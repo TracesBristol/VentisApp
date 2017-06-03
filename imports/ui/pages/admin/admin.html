@@ -1,0 +1,11 @@
+<template name="Admin">
+    <div style="width:500px;margin:auto auto auto auto">
+        {{> atForm}}
+    </div>
+    <div style="margin-left:auto;margin-right:auto;height:500px">
+    {{#if currentUser}}
+        {{> homeCurrentlyTracking}}
+        {{> keywordPolarity}}
+    {{/if}}
+    </div>
+</template>

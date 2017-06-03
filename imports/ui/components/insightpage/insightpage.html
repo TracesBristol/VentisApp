@@ -1,0 +1,67 @@
+<template name="insightSearch">
+    <div class="container-fluid searchCont text-center">
+        <div class="row">
+            {{#each keywords}}
+                <button type="button" class="btn searchBtn" style="text-transform: capitalize;margin:5px 5px 5px 5px" id="{{word}}">{{word}}</button>
+            {{/each}}
+            <p>Click Keyword (twice) to update data</p>
+        </div>
+    </div>
+</template>
+
+<template name="insightLanguages">
+    <div class="insightGraphCont col-sm-6">
+        <h3 class="text-center">Language Breakdown</h3>
+        <div id="languageGraphDiv">
+        </div>
+    </div>
+</template>
+
+<template name="insightLocations">
+    <div class="insightMapCont col-sm-6">
+        <h3 class="text-center">Location Breakdown</h3>
+        <div id="locationGraphDiv" style="padding-left:100px"></div>
+    </div>
+</template>
+
+<template name="insightTokens">
+    <div class="insightListCont col-sm-4">
+        <h3 class="text-center">This keyword commonly appears with:</h3>
+        <ul class="list-group">
+            {{#each tokenMap}}
+                <li class="list-group-item tokenItems" id="{{_id}}" style="text-transform:capitalize;">{{_id}}: {{value}} occurrences</li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="insightRecentTweets">
+    <div class="insightTweetCont col-sm-6">
+        <h3 class="text-center">Recent tweets</h3>
+        <div id="tweetbox">
+            {{#each tweets}}
+                <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">{{text}}</p>&mdash; {{name}} (@{{screen_name}}) {{created_at}}</blockquote>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="insightSection2">
+    <div class="container-fluid insightBottom">
+        <div class="row">
+            {{> insightLocations}}
+            {{> insightRecentTweets}}
+        </div>
+    </div>
+</template>
+
+<template name="insightSection1">
+    <div class="insightTop">
+        <div class="row">
+            <span class="col-sm-1"></span>
+            {{> insightTokens}}
+            {{> insightLanguages}}
+        </div>
+    </div>
+</template>
