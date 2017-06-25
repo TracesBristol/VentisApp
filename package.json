@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "connect": "MONGO_URL='mongodb://ventisMeteor:V3NT1SD3M0@52.56.180.130:3000/meteor' meteor run"
+    "connect": "MONGO_URL='mongodb://<USERNAME>:<PASSWORD>@<SERVER ADDRESS>:3000/meteor' meteor run",
+    "winConnect": "set MONGO_URL=mongodb://<USERNAME>:<PASSWORD>@<SERVER ADDRESS>:3000/meteor; meteor run"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",

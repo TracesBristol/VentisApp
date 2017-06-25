@@ -28,6 +28,8 @@ Meteor.methods({
 
     // MapReduce methods
 
+    // No keywords
+
     tagCount: function() {
         var tagMap = function() {
             var tag = this.tag;
@@ -47,10 +49,10 @@ Meteor.methods({
             return count;
         }
 
-        var result = Tweets.mapReduce(tagMap, tagReduce, { query: {}, out: "tag_map" });
+        var result = Tweets.mapReduce(tagMap, tagReduce, { query: {}, out: { reduce: "tag_map" } });
 
     },
-    
+
     tagSentiment: function() {
         var tsMap = function() {
             var tag = this.tag;
@@ -75,10 +77,12 @@ Meteor.methods({
             return mean;
         }
 
-        var result = Tweets.mapReduce(tsMap, tsReduce, { query: {}, out: "tagSentiment_map" });
+        var result = Tweets.mapReduce(tsMap, tsReduce, { query: {}, out: { reduce: "tagSentiment_map" } });
 
     },
-    
+
+    // keywords
+
     locationCount: function(tag) {
         var locationMap = function() {
             var location = this.location;
@@ -100,13 +104,13 @@ Meteor.methods({
         }
 
         if (tag != "") {
-            var result = Tweets.mapReduce(locationMap, locationReduce, { query: {"tag": tag}, out: "location_map" });
+            var result = Tweets.mapReduce(locationMap, locationReduce, { query: {"tag": tag}, out: { reduce: "location_map" } });
         } else {
-            var result = Tweets.mapReduce(locationMap, locationReduce, { query: {}, out: "location_map" });
+            var result = Tweets.mapReduce(locationMap, locationReduce, { query: {}, out: { reduce: "location_map" } });
         }
 
     },
-    
+
     tokenCount: function(tag) {
         var tokenMap = function() {
             var tokens = this.tokens;
@@ -131,13 +135,13 @@ Meteor.methods({
         }
 
         if (tag != "") {
-            var result = Tweets.mapReduce(tokenMap, tokenReduce, { query: {"tag": tag}, out: "token_map" });
+            var result = Tweets.mapReduce(tokenMap, tokenReduce, { query: {"tag": tag}, out: { reduce: "token_map" } });
         } else {
-            var result = Tweets.mapReduce(tokenMap, tokenReduce, { query: {}, out: "token_map" });
+            var result = Tweets.mapReduce(tokenMap, tokenReduce, { query: {}, out: { reduce: "token_map" } });
         }
 
     },
-    
+
     languageCount: function(tag) {
         var languageMap = function() {
             var language = this.lang;
@@ -159,12 +163,12 @@ Meteor.methods({
         }
 
         if (tag != "") {
-            var result = Tweets.mapReduce(languageMap, languageReduce, { query: {"tag": tag}, out: "language_map" });
+            var result = Tweets.mapReduce(languageMap, languageReduce, { query: {"tag": tag}, out: { reduce: "language_map" } });
         } else {
-            var result = Tweets.mapReduce(languageMap, languageReduce, { query: {}, out: "language_map" });
+            var result = Tweets.mapReduce(languageMap, languageReduce, { query: {}, out: { reduce: "language_map" } });
         }
     },
-    
+
     dateCount: function(tag) {
         var dateMap = function() {
             var dateParsed = new Date(this.created_at);
@@ -186,9 +190,9 @@ Meteor.methods({
             return count;
         }
         if (tag != "") {
-            var result = Tweets.mapReduce(dateMap, dateReduce, { query: {"tag": tag}, out: "date_map" });
+            var result = Tweets.mapReduce(dateMap, dateReduce, { query: {"tag": tag}, out: { reduce: "date_map" } });
         } else {
-            var result = Tweets.mapReduce(dateMap, dateReduce, { query: {}, out: "date_map" });
+            var result = Tweets.mapReduce(dateMap, dateReduce, { query: {}, out: { reduce: "date_map" } });
         }
     },
 });

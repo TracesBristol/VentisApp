@@ -24,13 +24,6 @@ FlowRouter.route('/insight', {
   },
 });
 
-FlowRouter.route('/demo', {
-  name: 'App.demo',
-  action() {
-    BlazeLayout.render('App_body', { main: 'Demo' });
-  },
-});
-
 FlowRouter.route('/admin', {
   name: 'App.demo',
   action() {

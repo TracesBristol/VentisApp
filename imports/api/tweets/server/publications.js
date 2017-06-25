@@ -29,9 +29,9 @@ Meteor.publish('tweets.some', function(limit, tag) {
 Meteor.publish('tweets.show', function(tag) {
   //default limit if none set
     if (tag != "") {
-        return Tweets.find({"tag": tag}, {sort: {'created_at': 1},limit: 3});
+        return Tweets.find({"tag": tag}, {sort: {$natural:-1},limit: 3});
     } else {
-        return Tweets.find({}, {sort: {'created_at': 1},limit: 3});
+        return Tweets.find({}, {sort: {$natural:-1},limit: 3});
     }
 });
 

@@ -19,10 +19,10 @@ Template.info.onCreated(function() {
     Meteor.subscribe('tweets.some');
     Meteor.subscribe('tagMap');
     Meteor.subscribe('tagSentMap');
-    Meteor.subscribe('locationMap', 25);
-    Meteor.subscribe('tokenMap', 25);
-    Meteor.subscribe('languageMap', 25);
-    Meteor.subscribe('dateMap', 25);
+    Meteor.subscribe('locationMap', 10);
+    Meteor.subscribe('tokenMap', 10);
+    Meteor.subscribe('languageMap', 10);
+    Meteor.subscribe('dateMap', 10);
 });
 
 Template.info.helpers({
